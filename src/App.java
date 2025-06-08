@@ -20,11 +20,11 @@ public class App {
                 }
             }
             Fabrica fabrica = new Fabrica(maquinas, piezasTotales);
-            System.out.println("Mejor solucion backtracking: " +fabrica.minimizarCosto().toString());
+            // System.out.println("Mejor solucion backtracking: " +fabrica.minimizarCosto().toString());
+            System.out.println(fabrica.greedy());
             buffer.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        ;
     }
 }
