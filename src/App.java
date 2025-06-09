@@ -10,9 +10,9 @@ public class App {
             ArrayList<Maquina> maquinas = new ArrayList<>();
             int piezasTotales = Integer.parseInt(buffer.readLine());
             while((linea = buffer.readLine()) != null) {
-                if(linea.trim().isEmpty()){
+                if(linea.trim().isEmpty())
                     continue;
-                }else {
+                else {
                     String[] confMaq = linea.split(", ");
                     int piezasQueProduce = Integer.parseInt(confMaq[1]);
                     Maquina maq = new Maquina(confMaq[0], piezasQueProduce);
@@ -20,8 +20,19 @@ public class App {
                 }
             }
             Fabrica fabrica = new Fabrica(maquinas, piezasTotales);
-            // System.out.println("Mejor solucion backtracking: " +fabrica.minimizarCosto().toString());
-            System.out.println(fabrica.greedy());
+            
+            System.out.println("Backtracking:");
+            System.out.println("Solucion obtenida: " + fabrica.minimizarCosto());
+            System.out.println("cantidad de piezas producidas: " + fabrica.getPiezasAFabricar());
+            System.out.println("cantidad de puestas en marcha requeridas: " + fabrica.getCantPuestasEnMarcha());
+            System.out.println("Cantidad de estados generados: " + fabrica.cantEstados());
+
+            System.out.println("Greedy:");
+            System.out.println("Solucion obtenida: " + fabrica.greedy());
+            System.out.println("cantidad de piezas producidas: " + fabrica.getPiezasAFabricar());
+            System.out.println("cantidad de puestas en marcha requeridas: " + fabrica.getCantPuestasEnMarcha());
+            System.out.println("Cantidad de candidatos considerados: " + fabrica.cantConsiderados());
+
             buffer.close();
         } catch (Exception e) {
             System.out.println(e);
